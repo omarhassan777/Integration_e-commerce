@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id= "action_integration_product" model="ir.actions.act_window">
+     <field name= "name">product</field>                 
+     <field name="res_model">integration.product</field><!-- res_model value should match your actual model name-->
+     <field name="type">ir.actions.act_window</field> 
+     <field name="view_mode">tree,kanban,form</field>
+     </record>
+     
+    
+<!--form and tree -->
+
+    <record id= "view_integration_product_form" model="ir.ui.view">
+     <field name= "name">integration.product.form</field>                 
+     <field name="model">integration.product</field>
+     <field name="arch" type="xml">
+     
+            <form> 
+
+              <header>
+                            
+                                <button string="Open Inventory" type="object" name="action_open_inventory" class="oe_highlight" position="after"/>
+                           
+                            <button string="Open Web Page" type="object" class="oe_highlight" icon="fa-external-link" 
+                                    name="open_web_page"/>
+                </header>
+
+
+                <sheet> 
+                         <group>
+                              <group string="Basic info">
+                                        <field name="name"/>
+                                        <field name="title"/>
+                                        <field name="product_id"/>
+                                        <field name="price"/>
+                                        <field name="discount" invisible ="True"/>
+                                   </group>
+                                   <group string=" info">
+                                        <field name="image" widget="image" options="{'size': (100, 100)}"/>                        
+                                        <field name="availability_inventory"/>
+                                        <field name="rate"/>
+                                        <field name="list_books"/>
+                                        <!-- <field name="is_child"/>
+                                        <field name="width"/>
+                                        <field name="hight"/>
+                                        <field name="notes"/> -->
+
+                                   </group>
+                         </group>
+
+
+                         
+
+
+                        <notebook> 
+                                  <page string="CV">
+                                      
+                                            <field name="cv"/>
+                                      
+                                    </page>
+
+                                    <page string="Adress">
+                                         <!-- <group> -->
+                                                <field name="adress"/>
+                                        <!-- </group> -->
+                                    </page>
+
+                        </notebook> 
+                          
+                        
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                  </div>
+            </form>
+       </field>
+    </record>
+   
+
+   
+    <record id= "view_integration_product_tree" model="ir.ui.view">
+     <field name= "name">integration.product.tree</field>                 
+     <field name="model">integration.product</field>
+        <field name="arch" type="xml">
+        
+                    <tree>  
+
+                                <field name="name"/>
+                                
+                              
+                                <field name="availability_inventory"/>
+                                <field name="rate"/>
+                                <!-- <field name="is_child"/>
+                                <field name="age"/>
+                                 <field name="width"/>
+                                  <field name="hight"/>
+                                <field name="notes"/> -->
+                    </tree>
+        </field>
+     </record> 
+ 
+      <record id="view_integration_product_kanban" model="ir.ui.view">
+    <field name="name">integration.product.kanban</field>
+    <field name="model">integration.product</field>
+    <field name="arch" type="xml">
+        <kanban create="0">
+            <field name="title"/>
+            <field name="product_id"/>
+            <field name="price"/>
+           
+            
+             <field name="discount"  />
+            <field name="availability_inventory"/>
+            <field name="rate"/>
+            <field name="image"/>
+            <!--<field name="cv"/>
+            <field name="adress"/> -->
+            <progressbar field="activity_state" colors='{"planned": "success", "today": "warning", "overdue": "danger"}'/>
+            <templates id="kanban_box_template" inherit_id="web.KanbanBox">
+                <t t-name="kanban-box"> 
+
+                    <div class="oe_kanban_card oe_kanban_global_click">
+                        
+                            <div class="o_kanban_image me-1">
+                            <field name="image" widget="image" options="{'size': (60, 70)}"/>
+                             <!--  <img t-att-src="kanban_image('product.template', 'image_128', record.id.raw_value)" alt="Product" class="o_image_64_contain"/>
+                                <img t-if="record" t-att-src="'/web/image/' + 'integration.product' + '/' + 'image' + '/' + record.title.raw_value" alt="Product" class="o_image_64_contain"/>                                <img t-att-src="kanban_image('integration.product', 'image_128', record.id.raw_value)" alt="Product" class="o_image_64_contain"/> -->
+                            </div>
+                                   
+
+                        <!-- Display other fields -->
+                         <div class="oe_kanban_details">
+
+                                <div class="o_kanban_record_top mb-0">
+                                     <!-- Display the title -->
+                                    <div class="o_kanban_record_headings">
+                                        <strong class="o_kanban_record_title">
+                                          name :  <field name="title"/>
+                                        </strong>
+                                    </div>
+                                  
+                                </div>
+
+                                <div class="o_kanban_record_top">
+                                        <!-- Display price and availability -->
+                                       <div>
+                                            Price: <field name="price" />
+                                        </div>
+                                                                    
+                                </div>   
+                                       
+                                    
+                                            <div>
+                                                discount : <field name="discount" />
+                                                <span style="text-decoration: line-through; color: red;"><field name="price" /></span>
+                                            </div>
+                                                
+                                                
+                                        
+
+                                        <div>
+                                            Availability: <field name="availability_inventory"/>
+                                        </div>
+                                    
+                                
+                                    <div>                             
+                                        <!-- Display rate -->
+                                        <div>
+                                            Rate: <field name="rate"/>
+                                        </div>
+                                    </div>
+
+                                </div>
+                    </div>   
+                </t>
+            </templates>
+        </kanban>
+    </field>
+    </record>
+
+
+
+      
+    <menuitem id="menu_integration_product"
+    name="product"
+    parent="menu_integration_products"
+    action="action_integration_product"
+    sequence="11"/>
+    
+</odoo>
+
+
+<!-- polish notation 
+using in any field condition with other field 
+ attrs="{
+    'readonly' : ['| ',('gender','=','f'),('','','')],
+    'invisible' : [],
+    'required' : []
+ }"
+
+ -->
+ <!-- Domain
+   1-using with field many2one only 
+   to limit option in field 
+   domain= "[('is_open','=','f')]"
+
+   2-using with onhcange()
+   to return domain in field related
+   with value anthor field
+   gender is f
+
+   limit option increase 
+  -->

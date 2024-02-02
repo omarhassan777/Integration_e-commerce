@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+Integration_e-commerce.access_integration_product,access_integration_product,Integration_e-commerce.model_integration_product,base.group_user,1,1,1,1

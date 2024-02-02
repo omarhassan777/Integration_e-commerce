@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<menuitem id="menu_integration_root"
+name="Integration"    
+sequence="11"/>
+<!-- name menu for user -->
+
+<menuitem id="menu_integration_products"
+name="products"
+parent="menu_integration_root"
+sequence="11"/>
+
+ 
+
+<!-- opertion_surgery inherit from menu_hospital_root-->
+
+
+
+
+
+
+</odoo>
