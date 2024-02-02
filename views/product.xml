@@ -191,24 +191,3 @@
 </odoo>
 
 
-<!-- polish notation 
-using in any field condition with other field 
- attrs="{
-    'readonly' : ['| ',('gender','=','f'),('','','')],
-    'invisible' : [],
-    'required' : []
- }"
-
- -->
- <!-- Domain
-   1-using with field many2one only 
-   to limit option in field 
-   domain= "[('is_open','=','f')]"
-
-   2-using with onhcange()
-   to return domain in field related
-   with value anthor field
-   gender is f
-
-   limit option increase 
-  -->
