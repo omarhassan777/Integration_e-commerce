@@ -15,4 +15,11 @@
 5- git push origin main                 // to upload the modification to the github
  
 
+--------------------- [ Modify a text file ] ------------------------------
+1- Modify the file
+2- git add .
+3- git commit -m "Modify the git file"
+4- git push origin main  
+
+
  
