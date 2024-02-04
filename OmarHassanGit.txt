@@ -1,0 +1,18 @@
+----------------------- [ Add File to the Git ] --------------------------
+1- git clone https://github.com/omarhassan777/Integration_e-commerce            // In case that you don't have the project on your pc 
+          - Add NEW File to the folder of the git or | Doing any modification
+2- git status -s                        // show me the modified files
+3- git add .                            // Add the modified files to the history of your get to be able to push it
+4- git commit -m "Add Report File"      // Store the modification to the git history to be able to push it to the main 
+5- git push origin main                 // Check if there any commits added the the git history then push it to the remote host
+
+
+----------------------- [ To Delete A File and upload to github ] -------------------------------------
+1- Delete Direcotry File
+2- git status -s                        // You will see the deleted file
+3- git add .                            // Add the deleted file to the index to be able to make a commit 
+4- git commit -m "Delete Report Folder" // To store the modification in the git history to be able to push it to the remote host
+5- git push origin main                 // to upload the modification to the github
+ 
+
+ 
